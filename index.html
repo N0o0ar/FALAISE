@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecteur Vidéo Personnalisé</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body>
+  <div id="video-container">
+    <!-- Zone pour capturer tous les mouvements de souris -->
+    <div id="mouse-capture-area"></div>
+    
+    <!-- Iframe Vimeo avec controls=0 -->
+    <iframe id="vimeo-player" src="https://player.vimeo.com/video/1061199605?h=a2cea1cc1c&controls=0" 
+            frameborder="0" allow="autoplay; fullscreen" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+    </iframe>
+    
+    <div id="controls">
+      <button id="play-btn"></button>
+      <button id="processus-creatif-btn"></button>
+      <button id="fullscreen-btn"></button> <!-- Nouveau bouton plein écran -->
+      <div id="progress-bar">
+        <div id="progress-preview"></div>
+        <div id="progress-fill"></div>
+      </div>
+    </div>
+    
+    
+    
+
+
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

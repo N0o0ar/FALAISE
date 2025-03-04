@@ -1,0 +1,286 @@
+/* Style global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  overflow: hidden;
+}
+
+#video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+/* Contrôles vidéo */
+#controls {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.5s ease;
+  z-index: 9999; /* Place les contrôles bien au-dessus de tout */
+  opacity: 1; /* Les contrôles sont visibles par défaut */
+  pointer-events: auto; /* Permet l'interaction avec les contrôles */
+}
+
+/* Conteneur pour centrer le bouton Play et positionner le bouton Processus créatif */
+.button-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Bouton "Play" */
+#play-btn {
+  background: url('images/bouton.png') no-repeat center center;
+  background-size: contain;
+  width: 12vw;
+  height: 8vw;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  z-index: 1;
+  margin-bottom: 0.5vw;
+}
+
+#play-btn:hover {
+  transform: scale(1.1); /* Légère augmentation de la taille au survol */
+}
+
+/* Bouton "Processus créatif" (galerie.png) */
+#processus-creatif-btn {
+  background: url('images/galerie.png') no-repeat center center;
+  background-size: contain;
+  width: 8vw;
+  height: 6vw;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  position: absolute; 
+  right: 42vw; /* Ajuste la position à gauche du bouton play */
+  bottom: 3.5vw; /* Ajuste cette valeur pour être au même niveau que le bouton play */
+  z-index: 1;
+}
+
+#processus-creatif-btn:hover {
+  transform: scale(1.1); /* Légère augmentation de la taille au survol */
+  transition: transform 0.2s ease;
+}
+
+#fullscreen-btn {
+  background: url('images/full.png') no-repeat center center;
+  background-size: contain;
+  width: 8vw;
+  height: 6vw;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  position: absolute;
+  left: 42vw; /* Ajuste la position à droite du bouton play */
+  bottom: 3.5vw; /* Ajuste cette valeur pour être au même niveau que le bouton play */
+  z-index: 1;
+}
+
+#fullscreen-btn:hover {
+  transform: scale(1.1); /* Légère augmentation de la taille au survol */
+  transition: transform 0.2s ease;
+}
+
+/* Barre de progression */
+#progress-bar {
+  width: 70vw;
+  height: 1.5vw;
+  background-color: white;
+  border: 0.15vw solid black;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  margin-top: 1vw;
+}
+
+#progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: black;
+  border-radius: 50px;
+}
+
+#progress-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Couleur grisée pour la prévisualisation */
+  border-radius: 50px;
+  pointer-events: none; /* Empêche les événements de pointer sur la barre de prévisualisation */
+}
+
+/* Zone de capture des mouvements de souris */
+#mouse-capture-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* En dessous des contrôles pour éviter les interférences */
+}
+
+
+
+
+
+
+
+
+@font-face {
+  font-family: 'Candara';
+  src: url('font/Candara.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CandaraBold';
+  src: url('font/Candara_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Appliquer la police Candara Bold pour le titre */
+h1 {
+  font-family: 'CandaraBold', sans-serif;
+  font-size: 2.5rem; /* Ajuste la taille du texte si besoin */
+  color: black; /* Couleur du texte */
+}
+
+/* Appliquer la police Candara pour le corps de texte */
+p {
+  font-family: 'Candara', sans-serif;
+  font-size: 1rem; /* Ajuste la taille du texte */
+  color: black; /* Couleur du texte */
+}
+  
+
+/* Conteneur pour le processus créatif */
+/* Conteneur principal avec bordures arrondies */
+body {
+  overflow-x: hidden !important; /* Évite les débordements horizontaux */
+}
+
+.processus-container {
+  background-color: white; 
+  padding: 2rem; 
+  border-radius: 20px; 
+  margin: 2rem auto;
+  width: 60vw;
+  height: 60vh;
+  margin-top: 10vw; /* Utilise la hauteur de la fenêtre pour positionner le conteneur */
+  min-height: 100vh; /* Le conteneur aura toujours au moins la hauteur de la fenêtre */
+  overflow: auto; /* Empêche les débordements internes */
+}
+
+
+/* Ajustement de la galerie d'images pour qu'elle reste à l'intérieur du conteneur */
+.gallery img {
+  border-radius: 3vw; /* Angles arrondis pour les images dans la galerie */
+  
+}
+
+
+.processus-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.processus-container p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Galerie en colonnes */
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.column {
+  width: 48%;
+}
+
+.column img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.subtitle {
+  font-family: 'Candara', sans-serif;
+  font-size: 1rem;
+  color: black;
+  text-align: center;
+  margin-top: 0.5rem; /* Laisse cet espacement pour le sous-titre */
+}
+
+/* Ajout de marge spécifique sous la première image */
+.column:first-child img {
+  margin-bottom: 4.45rem; /* Ajuste cette valeur pour aligner les deux images du bas */
+}
+
+/* Bouton de retour vidéo avec une image de fond */
+#retour-video-btn {
+  background: url('images/retour.png') no-repeat center center;
+  background-size: contain;
+  width: 8vw;
+  height: 6vw;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 2rem; /* Ajuste la position du bouton de retour */
+  left: 2rem;
+  z-index: 1;
+}
+
+#retour-video-btn:hover {
+  transform: scale(1.1); /* Légère augmentation de la taille au survol */
+  transition: transform 0.2s ease;
+}
